@@ -15,6 +15,19 @@ export const getToken = () => {
   return false;
 };
 
+export const checkAuth = () => (dispatch) => fetch('http://localhost:3001/current_user', {
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    Authorization: getToken(),
+  },
+}).then((res) => {
+  if (res.ok) {
+    return res.json().then((user) => dispatch({ type: AUTHENTICATED, payload: user }));
+  }
+  return Promise.reject(dispatch({ type: NOT_AUTHENTICATED }));
+});
+
 export const signupUser = (credentials) => (dispatch) => fetch('http://localhost:3001/signup', {
   method: 'POST',
   headers: {
