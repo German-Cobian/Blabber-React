@@ -1,26 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { loginUser, checkAuth } from './app/redux/actions/auth';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import useAuth from './app/hooks/useAuth';
+import ProtectedRoutes from './app/components/ProtectedRoutes';
+import Signup from './app/components/Signup';
+import Login from './app/components/Login';
+import Logout from './app/components/Logout';
 
 function App() {
-  const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
-  const handleClick = () => {
-    dispatch(loginUser({ username: 'Steve', email: 'steve@gmail.com', password: 'steve123' }));
-  };
-
-  useEffect(() => {
-    dispatch(checkAuth());
-  }, [dispatch]);
+  const { authChecked, loggedIn } = useAuth();
 
   return (
     <Router>
-      <div className="App">
-        { auth.loggedIn ? 'logged in' : 'not logged in'}
-        <button type="button" onClick={handleClick}>get data</button>
-      </div>
+      <Routes>
+        <Route path="/login" element={<Login loggedIn={loggedIn} />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route element={<ProtectedRoutes isAllowed={loggedIn} authChecked={authChecked} redirectPath="/login" />}>
+          <Route path="/" element={<Logout />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }
