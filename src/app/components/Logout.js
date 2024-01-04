@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../redux/actions/auth';
+import '../style/outlet.css';
+import '../style/components.css';
 
 const Logout = () => {
   const dispatch = useDispatch();
@@ -11,8 +13,10 @@ const Logout = () => {
 
   return (
     <>
-      <h1>Logout Test Page</h1>
-      <button className="" type="button" onClick={logout}>Logout</button>
+      <div className="container">
+        <h1>Logout Test Page</h1>
+        <button className="" type="button" onClick={logout}>Logout</button>
+      </div>
     </>
   );
 };
