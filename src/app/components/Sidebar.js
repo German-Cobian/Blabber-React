@@ -1,17 +1,25 @@
-import React, {useState } from 'react';
+import React, {useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { displayUsers } from '../redux/actions/users';
 import MenuHamburger from '../assets/menu.svg';
 import MenuClose from '../assets/close.svg';
-import contacts from '../assets/data';
 import '../style/sidebar.css'
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const openMenu = (event) => {
     event.preventDefault();
     setIsOpen(!isOpen);
   };
+
+  const users = useSelector((state) => state.users);
+  useEffect(() => {
+      dispatch(displayUsers());
+  }, [dispatch]);
   
   return (
     <>
@@ -24,14 +32,14 @@ const Sidebar = () => {
         <nav className="nav d-flex flex-column align-items-center mt-5">
           <h2 className="link-txt">Contacts:</h2>
           <ul className="list-unstyled my-5">
-            {contacts.map((contact) => (
-              <li key={contact.id} className="rounded-4">
+            {users.map((user) => (
+              <li key={user.id} className="rounded-4">
                 <NavLink
-                  to={`/chat/${contact.id}`}
-                  id={contact.id}
+                  to={`/chat/${user.id}`}
+                  id={user.id}
                   activeClassName="active-link"
                   className="link-txt mt-5">
-                  <span><small>{contact.name}</small></span>
+                  <span><small>{user.username}</small></span>
                 </NavLink>
               </li>
             ))}
