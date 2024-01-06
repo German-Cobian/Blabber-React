@@ -14,6 +14,6 @@ export const displayUsers = () => async (dispatch) => {
     const users = data.map((user) => user.attributes);
     dispatch({ type: FETCH_USERS, payload: users });
     } else {
-  dispatch({ type: FETCH_USERS, payload: [] });
+    dispatch({ type: FETCH_USERS, payload: [] });
   }
 };

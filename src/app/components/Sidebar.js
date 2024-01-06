@@ -32,10 +32,11 @@ const Sidebar = () => {
         <nav className="nav d-flex flex-column align-items-center mt-5">
           <h2 className="link-txt">Contacts:</h2>
           <ul className="list-unstyled my-5">
-            {users.map((user) => (
+            {Array.isArray(users) && users.map((user) => (
               <li key={user.id} className="rounded-4">
                 <NavLink
                   to={`/chat/${user.id}`}
+                  key={user.id}
                   id={user.id}
                   activeClassName="active-link"
                   className="link-txt mt-5">

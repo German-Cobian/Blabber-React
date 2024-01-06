@@ -1,41 +1,47 @@
-/* eslint-disable eqeqeq */
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import '../style/outlet.css';
-import '../style/components.css';
-import contacts from '../assets/data';
-import Send from '../assets/send.png';
 
-const Chat = () => {
-  const { id } = useParams();
-
-  const selectedContact = contacts.find((contact) => contact.id === parseInt(id, 10));
+const Chat = (props) => {
+  const {
+    id, username, email, role, is_enabled, conversations
+  } = props;
 
   return (
     <div className="container">
-      <div  className="d-flex flex-column align-items-start m-flex">
-        <div>
-          <h2 className="mt-5">Chat</h2>
+      <div className="border border-dark rounded my-3 w-50" key={id}>
+        <div className="mx-5 mb-5">
+          <p>ID: {id}</p>
+          <p>Username: {username}</p>
+          <p>Email: {email}</p>
+          <p>Role: {role}</p>
+          <p>Enabled: {is_enabled}</p>
+          <h3>Conversations:</h3>
+          <ul>
+            {conversations.map((conversation) => (
+              <li key={conversation.id}>
+                <p>Title: {conversation.title}</p>
+                <p>Participants:</p>
+                <ul>
+                  {conversation.participants.map((participant) => (
+                    <li key={participant.user_id}>
+                      {participant.username}
+                    </li>
+                  ))}
+                </ul>
+                <p>Messages:</p>
+                <ul>
+                  {conversation.messages.map((message) => (
+                    <li key={message.user_id}>
+                      <p>Body: {message.body}</p>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="border border-dark rounded my-2">
-          <div class="d-flex flex-row justify-content-between mt-4">
-              <p className="ms-5"><strong>{selectedContact.name}</strong></p>
-              <p className="text-secondary me-5">{selectedContact.time}</p>
-          </div>
-          <p className="text-secondary mx-5">{selectedContact.text}</p>
-        </div>
-        <form class="resp-form">
-          <div class="form-group d-flex flex-column align-items-start my-3">
-            <input type="text" class="form-control" id="message-respond" placeholder="" />
-          </div>
-          <div class="d-flex flex-row justify-content-end">
-            <button type="submit" class="mb-2" >
-              <img className="send" src={Send} width="30" alt="send icon" />
-            </button>
-          </div>
-        </form>
       </div>
     </div>
   );
 };
+
 export default Chat;
