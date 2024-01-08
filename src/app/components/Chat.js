@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addMessage } from '../redux/actions/messages';
+import Send from '../assets/send.png';
 import '../style/outlet.css';
 import '../style/components.css';
 
@@ -43,60 +44,39 @@ const Chat = (props) => {
 
   return (
     <div className="container">
-      <div className="border border-dark rounded my-3 w-50" key={id}>
-        <div className="mx-5 mb-5">
-          <p>ID: {id}</p>
-          <p>Username: {username}</p>
-          <p>Email: {email}</p>
-          <p>Role: {role}</p>
-          <p>Enabled: {is_enabled}</p>
-          <h3>Conversations:</h3>
-          <ul>
-            <li key={conversations.id}>
-              <p>ID: {conversations.id}</p>
-              <p>Title: {conversations.title}</p>
-              <p>Participants:</p>
-              <ul>
-                {conversations.participants.map((participant) => (
-                  <li key={participant.user_id}>
-                    {participant.username}
-                  </li>
-                ))}
-              </ul>
-              <p>Messages:</p>
-              <ul>
-                {conversations.messages.map((message) => (
-                  <li key={message.user_id}>
-                    <p>Body: {message.body}</p>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <form className="my-3 d-flex flex-row justify-content-center border border-dark" onSubmit={onSubmit}>
-          <div className="my-3 mx-5">
-            <div className="d-flex flex-row justify-content-between my-3">
-              <label htmlFor="message">Message Text:</label>
-              <input
-                id="message"
-                type="text"
-                name="message"
-                placeholder="Type your message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                required
-              />
-            </div>
-            <div className="my-3">
-              <button className="btn btn-primary btn-lg" type="submit">
-                Add Message
-              </button>
-            </div>
-          </div>
-        </form>
+      <div className="d-flex flex-row justify-content-start my-5">
+        <h3>{conversations.title}</h3>
       </div>
-
+      <div key={id}>
+        <ul>
+          {conversations.messages.map((message) => (
+            <li className="border border-dark rounded my-3 me-5 w-100" key={message.user_id}>
+              <p className="ms-3"><small><strong>{message.username}</strong></small></p>
+              <p className="ms-5"> {message.body}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <form className="d-flex flex-row justify-content-end mb-5" onSubmit={onSubmit}>
+        <div className="chat-input d-flex flex-row">
+          <div className="">
+            <input
+              id="message"
+              type="text"
+              name="message"
+              placeholder="Type your message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+            />
+          </div>
+          <div className="">
+            <button  type="submit">
+              <img className="send" src={Send} width="35" height="23" alt="send icon" />
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 };
