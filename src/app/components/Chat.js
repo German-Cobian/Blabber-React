@@ -11,15 +11,11 @@ const Chat = (props) => {
   const [message, setMessage] = useState('');
 
   const {
-    id, username, email, role, is_enabled, conversations
+    id, conversations
   } = props;
 
   const onSubmit = (data) => {
-    console.log("onSubmit fired!")
-    console.log(conversations.id)
-    console.log(currentUser.id)
-    console.log(message)
-
+    
     if (!conversations) {
       // Handle the case where conversations is undefined
       console.error('Conversations is undefined');
@@ -44,7 +40,8 @@ const Chat = (props) => {
 
   return (
     <div className="container">
-      <div className="d-flex flex-row justify-content-start my-5">
+      <div className="ms-5">
+      <div className="d-flex flex-row justify-content-start my-5 ms-5">
         <h3>{conversations.title}</h3>
       </div>
       <div key={id}>
@@ -57,7 +54,7 @@ const Chat = (props) => {
           ))}
         </ul>
       </div>
-      <form className="d-flex flex-row justify-content-end mb-5" onSubmit={onSubmit}>
+      <form className="d-flex flex-row justify-content-end border-top border-dark mt-5" onSubmit={onSubmit}>
         <div className="chat-input d-flex flex-row">
           <div className="">
             <input
@@ -70,13 +67,14 @@ const Chat = (props) => {
               required
             />
           </div>
-          <div className="">
+          <div>
             <button  type="submit">
               <img className="send" src={Send} width="35" height="23" alt="send icon" />
             </button>
           </div>
         </div>
       </form>
+      </div>
     </div>
   );
 };

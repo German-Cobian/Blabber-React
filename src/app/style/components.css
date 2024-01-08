@@ -1,22 +1,20 @@
-/* Login Form */
-
-.logo {
-  width: 30%;
-}
-
 /* chat */
 
 .chat-input {
-  bottom: 10%;
+  bottom: 5%;
   position: fixed;
 }
 
 input {
-  width: 600px;
+  width: 500px;
 }
 
-@media only screen and (max-width: 850px) {
+li {
+  list-style: none;
+}
+
+@media only screen and (max-width: 1000px) {
   input {
-    width: 400px;
+    width: 300px;
   }
 }

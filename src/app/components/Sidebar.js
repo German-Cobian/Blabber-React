@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logoutUser } from '../redux/actions/auth';
 import { displayUsers } from '../redux/actions/users';
 import MenuHamburger from '../assets/menu.svg';
 import MenuClose from '../assets/close.svg';
@@ -20,6 +21,10 @@ const Sidebar = () => {
   useEffect(() => {
       dispatch(displayUsers());
   }, [dispatch]);
+
+  const logout = () => {
+    dispatch(logoutUser());
+  };
   
   return (
     <>
@@ -45,7 +50,10 @@ const Sidebar = () => {
               </li>
             ))}
           </ul>
-          <NavLink to="/" activeClassName="active-link" className="link-txt mt-5"><span><small>Back</small></span></NavLink>
+          <div className="nav-btns mt-5">
+          <NavLink to="/" activeClassName="active-link" className="link-txt me-3"><span><small>Back</small></span></NavLink>
+            <button className="btn btn-outline-light" type="button" onClick={logout}>Logout</button>
+          </div>
         </nav>
       </aside>
     </>

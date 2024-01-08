@@ -24,6 +24,11 @@
   position: sticky;
 }
 
+.nav-btns {
+  bottom: 5%;
+  position: fixed;
+}
+
 @media only screen and (max-width: 800px) {
   .divH-C {
     display: block;

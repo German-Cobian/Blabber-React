@@ -5,7 +5,6 @@ import ProtectedRoutes from './app/components/ProtectedRoutes';
 import WithSidebar from './app/components/WithSidebar';
 import Signup from './app/components/Signup';
 import Login from './app/components/Login';
-import Logout from './app/components/Logout';
 import Blank from './app/components/Blank';
 import ChatContainer from './app/components/ChatContainer';
 
@@ -21,7 +20,6 @@ function App() {
           <Route element={<WithSidebar />}>
             <Route path="/" element={<Blank />} />
             <Route path="/chat/:id" element={<ChatContainer />} />
-            <Route path="/logout" element={<Logout />} />
           </Route>  
         </Route>
       </Routes>
