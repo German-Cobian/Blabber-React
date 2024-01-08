@@ -18,6 +18,7 @@ export const addMessage = (conversationId, data) => async (dispatch) => {
   }
 
   const responseData = await response.json();
+  console.log(responseData);
   dispatch({ type: CREATE_MESSAGE, payload: responseData.data });
   } catch (error) {
   console.error('Error creating message:', error);
