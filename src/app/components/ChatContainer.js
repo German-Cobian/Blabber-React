@@ -31,7 +31,6 @@ const ChatContainer = () => {
     conversations,
   } = userData[0];
 
-  
   return (
     <div className="container">
       <Chat

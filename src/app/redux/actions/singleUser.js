@@ -11,7 +11,6 @@ export const displayUser = (id) => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
     dispatch({ type: FETCH_USER, payload: data });
     } else {
     dispatch({ type: FETCH_USER, payload: [] });
