@@ -49,9 +49,9 @@ const Signup = () => {
               {...register('password', { required: 'Password is required' })}
             />
           </div>
-          <div className="d-flex flex-row">
+          <div className="d-flex flex-column">
             <input className="btn btn-outline-primary rounded me-5" type="submit" value="Sign Up"/>
-            <Link className="text-success mt-2" to="/login">Log In</Link>
+            <Link className="text-success mt-3" to="/login">Log In</Link>
           </div>
         </form>
       </div>

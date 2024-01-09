@@ -50,9 +50,9 @@ const Login = ({ loggedIn }) => {
               {...register('password', { required: 'Password is required' })}
             />
           </div>
-          <div className="d-flex flex-row">
-            <input className="btn btn-outline-primary rounded me-5" type="submit" value="Log In" />
-            <Link className="text-success mt-2" to="/signup">Sign Up</Link>
+          <div className="d-flex flex-column">
+            <input className="btn btn-outline-primary rounded" type="submit" value="Log In" />
+            <Link className="text-success mt-3" to="/signup">Sign Up</Link>
           </div>
         </form>
       </div>
