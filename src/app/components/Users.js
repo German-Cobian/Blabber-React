@@ -28,6 +28,7 @@ const ManageUsers = (props) => {
                 <span className="font-weight-bold"><strong>Status: </strong></span>
                 {status}
               </p>
+              <Link  to={`/update/${id}`} className="text-decoration-none">Edit User</Link>
             <div className="my-3">
               <button
                 type="button"
