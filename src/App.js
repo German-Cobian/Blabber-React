@@ -7,6 +7,8 @@ import Signup from './app/components/Signup';
 import Login from './app/components/Login';
 import Blank from './app/components/Blank';
 import ChatContainer from './app/components/ChatContainer';
+import ManageUsers from './app/components/ManageUsers';
+
 
 function App() {
   const { authChecked, loggedIn } = useAuth();
@@ -20,6 +22,7 @@ function App() {
           <Route element={<WithSidebar />}>
             <Route path="/" element={<Blank />} />
             <Route path="/chat/:id" element={<ChatContainer />} />
+            <Route path="/manage" element={<ManageUsers />} /> 
           </Route>  
         </Route>
       </Routes>
