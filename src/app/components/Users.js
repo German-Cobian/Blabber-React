@@ -1,11 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteUser } from '../redux/actions/users';
 import '../style/outlet.css';
 
 const ManageUsers = (props) => {
-  const dispatch = useDispatch();
 
   const {
     id, username, role, status
@@ -29,15 +26,6 @@ const ManageUsers = (props) => {
                 {status}
               </p>
               <Link  to={`/update/${id}`} className="text-decoration-none">Edit User</Link>
-            <div className="my-3">
-              <button
-                type="button"
-                className="btn btn-outline-danger rounded"
-                onClick={() => dispatch(deleteUser(id))}
-              >
-                Delete
-              </button>
-            </div>
           </div>
         </div>
       </div>

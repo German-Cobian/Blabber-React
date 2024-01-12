@@ -26,7 +26,7 @@ const ManageUsers = () => {
       <div>
         <div>
           {users.map((user) => (
-            <div key={user.id} className="border border-light my-3 mx-5 h-25">
+            <div key={user.id} className="border border-dark my-3 mx-5 h-25">
               <Users 
                 key={user.id}
                 id={user.id}

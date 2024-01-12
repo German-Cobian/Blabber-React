@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { getToken } from '../redux/actions/auth';
 import { editUser } from '../redux/actions/users';
+import { deleteUser } from '../redux/actions/users';
 import '../style/outlet.css';
 
 const EditUser = () => {
@@ -20,8 +21,8 @@ const EditUser = () => {
   }
 
   const [user, setUser] = useState({
-    role: 'user',  // initialize role
-    status: true,  // initialize status as true (checked)
+    role: '',
+    status: '',
   });
   
 
@@ -49,7 +50,7 @@ const EditUser = () => {
   const handleChange = (e) => {
     setUser((prevUser) => ({
       ...prevUser,
-      [e.target.name]: e.target.name === 'status' ? e.target.checked : e.target.value,
+      [e.target.name]: e.target.name === 'role' ? e.target.value : e.target.name === 'status' ? e.target.value === 'true' : prevUser.status,
     }));
     console.log(user.role)
     console.log(user.status)
@@ -72,37 +73,73 @@ const EditUser = () => {
     <main className="container">
       <div className="my-3 d-flex flex-column align-items-center">
         <h2>Edit User</h2>
-        <div className="d-flex flex-column justify-content-between border rounded border-primary my-3 px-5">
+        <div className="d-flex flex-column justify-content-between border border-dark rounded my-3 px-5">
           <div className="d-flex flex-column justify-content-around mt-3">
             <label htmlFor="username">Username: </label>
             <input className="form-control form-control-sm" type="" value={username} disabled />
           </div>
           <form onSubmit={handleSubmit}>
             <div>
-              <div className="d-flex flex-column justify-content-around my-3">
-                <label htmlFor="user-role">User Role: </label>
-                <input
-                  id="user-role"
-                  type="text"
-                  name="role"
-                  placeholder="user-role"
-                  onChange={handleChange}
-                  required
-                />
+              <div className="my-3">
+                <label htmlFor="user-role"><strong>User Role:</strong></label>
+                <div className="d-flex flex-column justify-content-start ms-5">
+                  <div className="d-flex flex-row justify-content-between mb-3">
+                    <label>User</label>
+                    <input
+                      type="radio"
+                      name="role"
+                      value="user"
+                      checked={user.role === 'user'}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="d-flex flex-row justify-content-between mb-3">
+                    <label>Admin</label>
+                    <input
+                      type="radio"
+                      name="role"
+                      value="admin"
+                      checked={user.role === 'admin'}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="d-flex flex-column justify-content-around my-3">
-                <label htmlFor="user-status"> Enabled: </label>
-                <input
-                  id="user-status"
-                  type="checkbox"
-                  name="status"
-                  checked={user.status}
-                  onChange={handleChange}
-                />
+              <div className="my-3">
+                <label htmlFor="user-status"><strong>Status:</strong></label>
+                <div className="d-flex flex-column justify-content-start ms-5">
+                  <div className="d-flex flex-row justify-content-between mb-3">
+                    <label>Enabled</label>
+                    <input
+                      type="radio"
+                      name="status"
+                      value={true}
+                      checked={user.status === true}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="d-flex flex-row justify-content-between">
+                  <label>Disabled</label>
+                    <input
+                      type="radio"
+                      name="status"
+                      value={false}
+                      checked={user.status === false}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="mb-3">
+              <div className="d-flex flex-row justify-content-between mt-5 mb-3">
                 <button className="btn btn-outline-primary rounded" type="submit" >
                   Edit User
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-danger rounded"
+                  onClick={() => dispatch(deleteUser(id))}
+                >
+                  Delete User if Inactive
                 </button>
               </div>
             </div>
