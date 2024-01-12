@@ -41,7 +41,6 @@ export const editUser = (id, updatedUserData) => async (dispatch) => {
   }
 };
 
-
 export const deleteUser = (id) => async (dispatch) => {
   const response = await fetch(`http://localhost:3001/users/${id}`, {
     method: 'DELETE',

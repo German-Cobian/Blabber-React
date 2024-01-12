@@ -9,8 +9,8 @@ import '../style/sidebar.css'
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-
   const [isOpen, setIsOpen] = useState(false);
+  const { currentUser } = useSelector((state) => state.auth);
 
   const openMenu = (event) => {
     event.preventDefault();
@@ -24,6 +24,18 @@ const Sidebar = () => {
 
   const logout = () => {
     dispatch(logoutUser());
+  };
+
+  const adminLinks = [{
+    path: '/manage',
+    name: 'Manage Users',
+  }];
+
+  const isAdmin = () => {
+    if (currentUser && currentUser.role === 'admin') {
+      return true;
+    }
+    return false;
   };
   
   return (
@@ -44,11 +56,21 @@ const Sidebar = () => {
                   key={user.id}
                   id={user.id}
                   activeClassName="active-link"
-                  className="link-txt mt-5">
+                  className="link-txt my-5">
                   <span><small>{user.username}</small></span>
                 </NavLink>
               </li>
             ))}
+            {isAdmin()? adminLinks.map(({ path, name }) => (
+                <li key={path}>
+                  <NavLink 
+                    className="link-txt" 
+                    to={path}>
+                    <span><small>{name}</small></span>
+                  </NavLink>
+                </li>
+              ))
+              : null}
           </ul>
           <div className="nav-btns mt-5">
           <NavLink to="/" activeClassName="active-link" className="link-txt me-3"><span><small>Back</small></span></NavLink>
