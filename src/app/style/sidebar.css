@@ -1,0 +1,58 @@
+.sidebar {
+  top: 0;
+  position: fixed;
+  width: 20%;
+  height: 100%;
+  z-index: 10000;
+  border-right: 1px black solid;
+  background-color: #353563;
+}
+
+/* #313030 */
+
+.link-txt {
+  color: white;
+  text-decoration: none;
+}
+
+.divH-C {
+  display: none;
+}
+
+.iconH-C {
+  width: 40px;
+  position: sticky;
+}
+
+.nav-btns {
+  bottom: 5%;
+  position: fixed;
+}
+
+@media only screen and (max-width: 800px) {
+  .divH-C {
+    display: block;
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+  }
+
+  .buttonH-C {
+    border: none;
+    background: #fff;
+  }
+
+  .sidebar {
+    display: none;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+
+  .open {
+    display: block;
+    z-index: 100;
+  }
+}

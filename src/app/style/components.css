@@ -1,0 +1,20 @@
+/* chat */
+
+.chat-input {
+  bottom: 5%;
+  position: fixed;
+}
+
+input {
+  width: 500px;
+}
+
+li {
+  list-style: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  input {
+    width: 300px;
+  }
+}

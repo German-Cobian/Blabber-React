@@ -18,49 +18,42 @@ const Signup = () => {
   };
 
   return (
-    <main className="">
-      <div className="">
-        <div className="">
-          <div className="">
-            <h2 className="">Sign Up</h2>
-          </div>
-          {error && <p className="">{error}</p>}
-          {errors.username && <p className="">Username is required</p>}
-          {errors.email && <p className="">Email is required</p>}
-          {errors.password && <p className="">Password is required</p>}
-          <form className="" onSubmit={handleSubmit(onFormSubmit)}>
-            <div className="">
-              <input
-                className=""
-                type="text"
-                placeholder="Username"
-                {...register('username', { required: 'Username is required' })}
-              />
-            </div>
-            <div className="">
-              <input
-                className=""
-                type="email"
-                placeholder="Email"
-                {...register('email', { required: 'Email is required' })}
-              />
-            </div>
-            <div className="">
-              <input
-                className=""
-                type="password"
-                placeholder="Password"
-                {...register('password', { required: 'Password is required' })}
-              />
-            </div>
-            <input
-              className=""
-              type="submit"
-              value="Sign Up"
-            />
-            <Link className="" to="/login">Log In</Link>
-          </form>
+    <main className="d-flex flex-row justify-content-center">
+      <div className="border border-dark rounded mt-5 py-5 px-5">
+        <div className="mb-4">
+          <h2 className="">Sign Up</h2>
         </div>
+        {error && <p className="">{error}</p>}
+        {errors.username && <p className="">Username is required</p>}
+        {errors.email && <p className="">Email is required</p>}
+        {errors.password && <p className="">Password is required</p>}
+        <form className="" onSubmit={handleSubmit(onFormSubmit)}>
+          <div className="mb-3">
+            <input
+              type="text"
+              placeholder="Username"
+              {...register('username', { required: 'Username is required' })}
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="email"
+              placeholder="Email"
+              {...register('email', { required: 'Email is required' })}
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="password"
+              placeholder="Password"
+              {...register('password', { required: 'Password is required' })}
+            />
+          </div>
+          <div className="d-flex flex-column">
+            <input className="btn btn-outline-primary rounded me-5" type="submit" value="Sign Up"/>
+            <Link className="text-success mt-3" to="/login">Log In</Link>
+          </div>
+        </form>
       </div>
     </main>
   );

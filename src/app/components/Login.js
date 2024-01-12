@@ -19,42 +19,41 @@ const Login = ({ loggedIn }) => {
   const onFormSubmit = (data) => dispatch(loginUser(data)).catch(() => setError('Invalid credentials. Try again'));
 
   return (
-    <main className="">
-      <div className="">
-        <div className="">
+    <main className="d-flex flex-row justify-content-center">
+      <div className="border border-dark rounded mt-5 py-5 px-5">
+        <div className="mb-4">
           <h2 className="">LOG IN</h2>
         </div>
         {error && <p className="">{error}</p>}
         {errors.username && <p className="">Username is required</p>}
         {errors.email && <p className="">Email is required</p>}
         {errors.password && <p className="">Password is required</p>}
-        <form className="" onSubmit={handleSubmit(onFormSubmit)}>
-          <div className="">
+        <form onSubmit={handleSubmit(onFormSubmit)}>
+          <div className="mb-3">
             <input
-              className=""
               type="username"
               placeholder="Username"
               {...register('username', { required: 'Username is required' })}
             />
           </div>
-          <div className="">
+          <div className="mb-3">
             <input
-              className=""
               type="email"
               placeholder="e-mail address"
               {...register('email', { required: 'email is required' })}
             />
           </div>
-          <div className="">
+          <div className="mb-3">
             <input
-              className=""
               type="password"
               placeholder="Password"
               {...register('password', { required: 'Password is required' })}
             />
           </div>
-          <input className="" type="submit" value="Log In" />
-          <Link className="" to="/signup">Sign Up</Link>
+          <div className="d-flex flex-column">
+            <input className="btn btn-outline-primary rounded" type="submit" value="Log In" />
+            <Link className="text-success mt-3" to="/signup">Sign Up</Link>
+          </div>
         </form>
       </div>
     </main>
