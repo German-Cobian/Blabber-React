@@ -6,7 +6,7 @@ const Blank = () => {
 
   return (
     <div className="container d-flex flex-row justify-content-center">
-      <h2 className="mt-5">Blank Home Page</h2>
+      <h2 className="mt-5">Welcome to Blabber</h2>
     </div>
   );
 };

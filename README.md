@@ -1,46 +1,103 @@
-# Getting Started with Create React App and Redux
+![](https://img.shields.io/badge/Microverse-blueviolet)
+![](https://img.shields.io/static/v1?label=BY&message=German-cobian&color=red)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Blabber-React
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+> This is a Chat application where users can message each other.
 
-### `npm start`
+In this app all users (admin and regular) are allowed the following actions:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- To signup.
+- To login.
+- To see all users listed on the sidebar, by their username.
+- To select a specific user that they desire to have a conversation with and, by clicking on the user's username, create a chat room where they can message the user and then receive replies. 
+![message](/app/assets/project-images/Message.png?raw=true "message") 
+![reply](/app/assets/project-images/Reply.png?raw=true "reply")
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Admins are allowed these additional actions:
 
-### `npm test`
+- To access the page for user management,
+![Manage users 1](/app/assets/project-images/Manage-Users1.png?raw=true "mnange-users1")
+- To edit the priviledges of the apps other users,  
+- To delete a user that is not a participant in any chat room.
+![Manage users 2](/app/assets/project-images/Manage-Users2.png?raw=true "manage-users2")
+<hr>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Back-end Repository 
 
-### `npm run build`
+- [RailsApp](https://github.com/German-Cobian/Blabber-Rails.git)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Built With
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Front-end
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Major languages: Javascript.
 
-### `npm run eject`
+- Frameworks: 
+  React.
+  - [react](https://reactjs.org/)
+  * Redux
+  [redux-toolkit](https://redux-toolkit.js.org/) 
+- Tools & Methods: PostgreSQL
+ 
+Additionally used
+- Css
+- Bootstrap
+<hr>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To get a local copy up and running follow these simple example steps.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```sh
+git clone git@github.com:German-Cobian/Blabber-React.git
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Then 
+```sh
+cd Blabber-React 
+```
 
-## Learn More
+To install packages
+```sh 
+npm install
+``` 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To Run the app
+```sh 
+npm start
+```
+<hr>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ ## Created by
+
+ 👤 **German Cobian**
+
+Platform | Badge |
+ --- | --- |
+ **GitHub**  | [@German Cobian](https://github.com/German-Cobian)
+ **Twitter** |[@GermanCobian2](https://twitter.com/GermanCobian2)
+ **LinkedIn** | [@German Cobian](https://www.linkedin.com/in/german-cobian/)
+<hr>
+
+## Contributing
+
+Contributions, issues and feature requests are welcome!
+Feel free to check the [issues page](git@github.com:German-Cobian/Blabber-React.git)
+<hr>
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+<hr>
+
+## Acknowledgments
+
+SmartPuntoGob
+<hr>
+
+## 📝 License
+
+This project is [MIT](https://github.com/German-Cobian/Blabber-React/blob/main/LICENSE) licensed.
